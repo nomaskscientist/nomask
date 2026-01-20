@@ -103,18 +103,23 @@ export default function Home() {
             </span>
 
             <span
-              onClick={() => {
-                fetch(`${API}/report`, { ... })
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ postId: post.id, reason: "abuse" })
-                });
-                alert("Жалоба отправлена");
-              }}
-              style={{ fontSize: 12, cursor: "pointer", opacity: 0.5 }}
-            >
-              Пожаловаться
-            </span>
+  onClick={() => {
+    fetch(`${API}/report`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        postId: post.id,
+        reason: "abuse",
+      }),
+    });
+
+    alert("Жалоба отправлена");
+  }}
+  style={{ fontSize: 12, cursor: "pointer", opacity: 0.5 }}
+>
+  Пожаловаться
+</span>
+
           </div>
 
           {replies(post.id).map(r => (
