@@ -34,19 +34,20 @@ export default function Home() {
   function sendPost() {
     if (!text.trim()) return;
 
-    fetch(`${API}/post`, { ... })
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        content: text,
-        nickname,
-        parentId: replyTo
-      })
-    }).then(() => {
-      setText("");
-      setReplyTo(null);
-      loadFeed();
-    });
+    fetch(`${API}/post`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    content: text,
+    nickname,
+    parentId: replyTo,
+  }),
+})
+  .then(() => {
+    setText("");
+    setReplyTo(null);
+    loadFeed();
+  });
   }
 
   const roots = posts.filter(p => p.parentId === null);
