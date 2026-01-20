@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   function loadFeed() {
-    fetch(${API}/feed)
+    fetch(`${API}/feed`)
       .then(r => r.json())
       .then(setPosts);
   }
@@ -34,7 +34,7 @@ export default function Home() {
   function sendPost() {
     if (!text.trim()) return;
 
-    fetch(${API}/post)
+    fetch(`${API}/post`, { ... })
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -103,7 +103,7 @@ export default function Home() {
 
             <span
               onClick={() => {
-                fetch(${API}/report)
+                fetch(`${API}/report`, { ... })
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ postId: post.id, reason: "abuse" })
